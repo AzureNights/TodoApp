@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+</head>
+<body>
+    <h1> TO DO LIST </h1>
+
+    <form
+        action = #
+        th:action = "@{/}"
+        th:object = "${todoController}"
+        method = "get"
+    >
+
+    <p> S/N <input type="number" name="s/n" th:field="*{id}"> </p>
+
+    <p> To Do Item <input type="text" name="todoItem" th:field="*{todoItem}"> </p> 
+
+    <p> Due <input type="date" name="due" th:field="*{due}"> </p> 
+
+    <p> Done <input type="checkbox" name="done" th:field="*{done}"> </p> 
+
+    <button> Submit </button>
+
+
+    
+
+
+    </form>
+
+<!--   // i want this in the table view column headers  -->  
+
+</body>
+</html>
