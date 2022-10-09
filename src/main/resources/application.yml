@@ -7,6 +7,6 @@ spring:
             clientId: 
             clientSecret: 
           google: 
-            client-id: google-client-id
+            client-id: 
             client-secret: 
 # ...

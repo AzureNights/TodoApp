@@ -1,7 +1,5 @@
 package com.todoattemptdeux.demo.config;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,29 +13,35 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
-public class redisConfig {
+public class redisconfig {
+
     @Value("${spring.redis.host}")
     private String redisHost;
-
     @Value("${spring.redis.port}")
-    private Optional<Integer> redisPort;
-
-    @Value("${spring.redis.password")
+    private Integer redisPort;
+    @Value("${spring.redis.password}")
     private String redisPassword;
+    //@Value("${spring.redis.database")
+    //private Integer redisDatabase;
+    
+    //need username?
 
     @Bean
     @Scope("singleton")
-    public RedisTemplate<String, Object> createRedisTemplate() {
+    //check on use of singleton
+    public RedisTemplate<String, Object> redisTemplate() {
         final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
         config.setHostName(redisHost);
-        config.setPort(redisPort.get());
+        config.setPort(redisPort);
         config.setPassword(redisPassword);
+        //config.setDatabase(redisDatabase);
 
         final JedisClientConfiguration jedisClient = JedisClientConfiguration.builder().build();
         final JedisConnectionFactory jedisFac = new JedisConnectionFactory(config, jedisClient);
         jedisFac.afterPropertiesSet();
-
-        final RedisTemplate<String, Object> template = new RedisTemplate<>();
+        
+        //added the <> after new redis template 
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisFac);
         template.setKeySerializer(new StringRedisSerializer());
 
@@ -45,6 +49,11 @@ public class redisConfig {
         template.setValueSerializer(serializer);
 
         return template;
-    }
-}
 
+    }
+
+
+
+
+    
+}
