@@ -12,18 +12,26 @@
 </head>
 <body th:object="${todoModel}">
 
-    <div class="text-center">
-    <h1> TO DO LIST </h1>
+    <div class="container-fluid">
+        <div class="p-3 mb-2 bg-light text-dark">    
+            <div class="text-center">
+                <h1> TO DO LIST </h1>
 
-    <table>
+                    <p th:text="*{sn}"></p>
+                    <p th:text="*{todoItem}"></p>
+                    <p th:text="*{due}"></p>
+                    <p th:text="*{done}"></p>
+                    
+    <!--
+        <table>
     <tr>
-        <!-- <td><p th:text="*{id}"></p></td> -->
+        <!-- <td><p th:text="*{id}"></p></td> 
         <td><p th:text="*{sn}"></p></td>
         <td><p th:text="*{todoItem}"></p></td>
         <td><p th:text="*{due}"></p></td>
         <td><p th:text="*{done}"></p></td>
     </tr>
-    </table>
+    </table> -->
 
     <!--
     <form
@@ -44,6 +52,9 @@
     <button> Submit </button>
 
     -->
+            </div>
+            
+        </div>
 
     </div>
 
